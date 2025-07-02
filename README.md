@@ -86,3 +86,10 @@ Este proyecto es una aplicación web desarrollada en Python con Flask que permit
 
 ```bash
 pip install flask
+
+## Imagen
+
+![Captura de pantalla (57)](https://github.com/user-attachments/assets/024f85f5-d352-4969-901b-160dfa802dee)
+![Captura de pantalla (58)](https://github.com/user-attachments/assets/119930bc-e418-49d7-8973-34897aa08ce3)
+
+
