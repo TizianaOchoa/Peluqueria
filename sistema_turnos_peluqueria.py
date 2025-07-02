@@ -8,6 +8,10 @@ app = Flask(__name__)
 clientes = []
 turnos = []
 
+@app.route('/', methods=['GET'])
+def index ():
+    return 'Bienvenidos a la aplicación de turnos'
+
 # ------------------------------
 # Historia de Usuario 1: Registrar Cliente
 # ------------------------------

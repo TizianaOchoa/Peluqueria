@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turnos Peluquería</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; background-color: #f9f9f9; }
+    h2 { color: #444; }
+    section { margin-bottom: 30px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    input, button { padding: 10px; margin-top: 10px; width: 100%; box-sizing: border-box; }
+    .response { margin-top: 10px; white-space: pre-wrap; background: #f1f1f1; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>💈 Sistema de Turnos - Peluquería</h1>
+
+  <section>
+    <h2>1️⃣ Registrar Cliente</h2>
+    <input id="nombre" placeholder="Nombre del cliente">
+    <input id="contacto" placeholder="Contacto (teléfono, email, etc)">
+    <button onclick="registrarCliente()">Registrar</button>
+    <div id="resp1" class="response"></div>
+  </section>
+
+  <section>
+    <h2>2️⃣ Reservar Turno</h2>
+    <input id="cliente_id" placeholder="ID del cliente">
+    <input id="fecha" placeholder="Fecha y hora (YYYY-MM-DD HH:MM)">
+    <button onclick="reservarTurno()">Reservar</button>
+    <div id="resp2" class="response"></div>
+  </section>
+
+  <section>
+    <h2>3️⃣ Listar Todos los Turnos</h2>
+    <button onclick="listarTurnos()">Listar</button>
+    <div id="resp3" class="response"></div>
+  </section>
+
+  <section>
+    <h2>4️⃣ Ver Turnos Futuros de Cliente</h2>
+    <input id="cliente_id_buscar" placeholder="ID del cliente">
+    <button onclick="verTurnosCliente()">Ver mis turnos futuros</button>
+    <div id="resp4" class="response"></div>
+  </section>
+
+  <script>
+    const api = 'http://127.0.0.1:5000';
+
+    function registrarCliente() {
+      fetch(api + '/registrar_cliente', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: document.getElementById('nombre').value,
+          contacto: document.getElementById('contacto').value
+        })
+      })
+      .then(res => res.json())
+      .then(data => document.getElementById('resp1').innerText = JSON.stringify(data, null, 2));
+    }
+
+    function reservarTurno() {
+      fetch(api + '/reservar_turno', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cliente_id: parseInt(document.getElementById('cliente_id').value),
+          fecha: document.getElementById('fecha').value
+        })
+      })
+      .then(res => res.json())
+      .then(data => document.getElementById('resp2').innerText = JSON.stringify(data, null, 2));
+    }
+
+    function listarTurnos() {
+      fetch(api + '/listar_turnos')
+        .then(res => res.json())
+        .then(data => document.getElementById('resp3').innerText = JSON.stringify(data, null, 2));
+    }
+
+    function verTurnosCliente() {
+      const id = document.getElementById('cliente_id_buscar').value;
+      fetch(`${api}/turnos_cliente/${id}`)
+        .then(res => res.json())
+        .then(data => document.getElementById('resp4').innerText = JSON.stringify(data, null, 2));
+    }
+  </script>
+</body>
+</html>
