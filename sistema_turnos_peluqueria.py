@@ -1,5 +1,5 @@
 # sistema_turnos_peluqueria.py
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from datetime import datetime
 
 app = Flask(__name__)
@@ -148,10 +148,15 @@ def turnos_cliente(cliente_id):
 
     return jsonify(futuros_ordenados), 200
 
+# Página web principal
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 
 # ------------------------------
 # Main
 # ------------------------------
+
 if __name__ == '__main__':
-    print("Sistema de Turnos para Peluquería corriendo en http://127.0.0.1:5000")
     app.run(debug=True)
