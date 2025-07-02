@@ -74,6 +74,12 @@ Este proyecto es una aplicación web desarrollada en Python con Flask que permit
 - **Entonces** el sistema debe mostrarme solo los turnos futuros asociados  
 
 ---
+## 📷 Imagen 
+![Captura de pantalla (58)](https://github.com/user-attachments/assets/70abb6b0-fc32-4a96-9e6d-9912a1e61f1f)
+![Captura de pantalla (57)](https://github.com/user-attachments/assets/452242c1-e0b2-4a7a-aa26-16e927dcd670)
+
+
+---
 
 ## 🧪 Requisitos
 
@@ -87,9 +93,7 @@ Este proyecto es una aplicación web desarrollada en Python con Flask que permit
 ```bash
 pip install flask
 
-## Imagen
 
-![Captura de pantalla (57)](https://github.com/user-attachments/assets/024f85f5-d352-4969-901b-160dfa802dee)
-![Captura de pantalla (58)](https://github.com/user-attachments/assets/119930bc-e418-49d7-8973-34897aa08ce3)
+
 
 
